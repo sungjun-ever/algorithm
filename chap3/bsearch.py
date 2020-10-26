@@ -1,6 +1,6 @@
 from typing import Any, Sequence
 
-def search_tree(x: Sequence, key: Any):
+def bsearch(x: Sequence, key: Any):
     pl = 0
     pr = len(x) - 1
 
@@ -26,7 +26,7 @@ for i in range(num):
 
 ky = int(input('검색할 숫자를 입력하세요.: '))
 
-result = search_tree(x, ky)
+result = bsearch(x, ky)
 
 if result == -1:
     print('검색값을 가지는 원소가 없습니다.')
