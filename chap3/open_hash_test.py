@@ -1,44 +1,44 @@
 from enum import Enum
-from class_test import ChainHash
+from open_hash import OpenHash
 
-Menu = Enum('Menu', ['add', 'remove','search', 'printed', 'exit'])
-# 메뉴를 만들어줍니다.
+Menu = Enum('Menu', ['add', 'remove', 'search', 'printed', 'exit'])
 
-def select_menu() -> Menu:  # 메뉴를 선택합니다.
+def select_menu() -> Menu:
     s = [f'({m.value}){m.name}' for m in Menu]
     while True:
-        print(*s, sep = '   ', end='')
+        print(*s, sep = ' ', end='')
         n = int(input(': '))
-        if 1 <= n <= len(Menu):
+        if 1 <= n <= (len(Menu)):
             return Menu(n)
 
-hash = ChainHash(13)
+   
+hash = OpenHash(13)
 
 while True:
     menu = select_menu()
 
     if menu == Menu.add:
-        key = input('추가할 키를 입력하세요.:')
-        value = input('추가할 값을 입력하세요.: ')
-        if not hash.add(key, value):
-            print('추가 실패')
+        key = int(input('추가할 키를 입력하세요.: '))
+        val = input('추가할 값을 입력하세요.: ')
+        if not hash.add(key, val):
+            print('추가를 실패했습니다.')
         else:
             print('추가 성공')
 
     elif menu == Menu.remove:
-        key = input('삭제할 키를 입력하세요.:')
+        key = int(input('삭제할 키를 입력하세요.: '))
         if not hash.remove(key):
             print('삭제를 실패했습니다.')
         else:
             print('삭제 성공')
 
     elif menu == Menu.search:
-        key = input('검색할 키를 입력하세요.:')
+        key = int(input('검색할 키를 입력하세요.: '))
         t = hash.search(key)
         if t is not None:
             print(f'검색한 키를 갖는 값은 {t}입니다.')
         else:
-            print('검색에 실패 했습니다.')
+            print('검색할 데이터가 없습니다.')
 
     elif menu == Menu.printed:
         hash.printed()
