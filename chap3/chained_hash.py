@@ -59,6 +59,9 @@ class ChainedHash:
                 else:
                     pp.next = p.next
                 return True
+            pp = p
+            p = p.next
+        return False
 
     def dump(self) -> None:
         for i in range(self.capacity):
