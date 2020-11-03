@@ -1,7 +1,7 @@
 from enum import Enum
 from fixed_stack import FixedStack
 
-Menu = Enum('Menu', ['push', 'pop', 'peek', 'search', 'dump', 'exit'])
+Menu = Enum('Menu', ['push', 'pop', 'peek', 'find', 'dump', 'clear', 'exit'])
 
 
 def select_menu() -> Menu:
@@ -41,8 +41,8 @@ while True:
         except FixedStack.Empty:
             print('스택이 비어있습니다.')
 
-    elif menu == Menu.search:
-        x = int(input('검색할 데이터를 입력하세요.:'))
+    elif menu == Menu.find:
+        x = int(input('검색할 데이터를 입력하세요.: '))
         if x in s:
             print(f'{s.count(x)}개 포함되고, 맨 앞의 위치는 {s.find(x)}입니다.')
         else:
@@ -50,6 +50,9 @@ while True:
 
     elif menu == Menu.dump:
         s.dump()
+
+    elif menu == Menu.clear:
+        s.clear()
 
     else:
         break
