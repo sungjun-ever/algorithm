@@ -32,7 +32,7 @@ class OpenHash:
     def rehash_value(self, key: Any) -> int:
         return (self.hash_value(key) + 1) % self.capacity
     
-    def search_node(self, key: Any) -> Any:
+    def search_bucket(self, key: Any) -> Any:
         hash = self.hash_value(key)
         p = self.table[hash]
 
@@ -46,7 +46,7 @@ class OpenHash:
         return None
 
     def search(self, key: Any) -> Any:
-        p = self.search_node(key)
+        p = self.search_bucket(key)
         if p is not None:
             return p.value
         else:
@@ -67,7 +67,7 @@ class OpenHash:
         return False
 
     def remove(self, key: Any) -> int:
-        p = self.search_node(key)
+        p = self.search_bucket(key)
         if p is None:
             return False
         p.set_status(Status.DELETED)
