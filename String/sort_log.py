@@ -12,3 +12,5 @@ def reorderLogFiles(self, logs: List[str]) -> List[str]:
 
     letters.sort(key= lambda x: (x.split()[1], x.split()[0]))
     return letters + digits
+
+
